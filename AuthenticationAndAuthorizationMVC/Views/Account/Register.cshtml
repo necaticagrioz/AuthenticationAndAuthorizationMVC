@@ -1,0 +1,61 @@
+﻿@{
+    Layout = null;
+}
+@model RegisterDTO
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Kayıt Ol!</h3>
+                    </div>
+                    <div class="card-body">
+                        <form asp-action="Register">
+                            <div>
+                                <label asp-for="UserName" class="form-label"></label>
+                                <input asp-for="UserName" class="form-control" placeholder="Kullanıcı adı giriniz...." />
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+                            </div>
+                            <div>
+                                <label asp-for="Email" class="form-label"></label>
+                                <input asp-for="Email" class="form-control" placeholder="E-mail giriniz...." />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div>
+                                <label asp-for="Password" class="form-label"></label>
+                                <input asp-for="Password" class="form-control" placeholder="Şifre giriniz...." />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div>
+                                <input type="submit" class="mt-2 btn btn-success btn-sm float-end" value="Kayıt"  />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <a asp-action="LogIn" asp-route-returnUrl="Register" class="btn btn-dark d-block">Giriş Yap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
+

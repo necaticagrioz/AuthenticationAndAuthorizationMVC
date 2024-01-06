@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "AssignedUser";
+}
+@model AssignedRoleDTO
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Rol Yönetimi</h3>
+            </div>
+            <form asp-action="AssignedUser">
+                <input type="hidden" asp-for="Role" />
+                <input type="hidden" asp-for="RoleName" />
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h5>Kullanıcıları Bu Role ata <span class="badge">@Model.RoleName</span></h5>
+                            <table class="table table-hover table-sm">
+                                @if (Model.HasNotRole is not null)
+                                {
+                                    @if (Model.HasNotRole.Count() == 0)
+                                    {
+                                        <tr>
+                                            <td>Bütün kullancılar bu role sahip!</td>
+                                        </tr>
+                                    }
+                                    else
+                                    {
+                                        @foreach (var user in Model.HasNotRole)
+                                        {
+                                            <tr>
+                                                <td>@user.UserName</td>
+                                                <td>
+                                                    <input type="checkbox" value="@user.Id" name="AddIds" />
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                }
+                            </table>
+                        </div>
+                        <div class="col-sm-6">
+                            <h5>Kullanıcıları Bu Rolden çıkar <span class="badge">@Model.RoleName</span></h5>
+                            <table class="table table-hover table-sm">
+                                @if (Model.HasRole is not null)
+                                {
+                                    @if (Model.HasRole.Count() == 0)
+                                    {
+                                        <tr>
+                                            <td>Bu rolde hiçbir kullanıcı yok!</td>
+                                        </tr>
+                                    }
+                                    else
+                                    {
+                                        @foreach (var user in Model.HasRole)
+                                        {
+                                            <tr>
+                                                <td>@user.UserName</td>
+                                                <td>
+                                                    <input type="checkbox" value="@user.Id" name="DeleteIds" />
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer" style="height:50px;">
+                    <div>
+                        <input type="submit" value="Kaydet" class="btn btn-outline-success float-end"/>
+                        <a asp-action="Index" class="btn btn-outline-info float-start">Geri Dön</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

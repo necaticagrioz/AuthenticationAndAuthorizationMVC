@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Edit";
+}
+@model UserUpdateDTO
+
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Düzenle!</h3>
+            </div>
+            <div class="card-body">
+                <form asp-action="Edit">
+                    <div>
+                        <label asp-for="UserName" class="form-label"></label>
+                        <input asp-for="UserName" class="form-control" placeholder="Kullanıcı adı giriniz...." />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" placeholder="E-mail giriniz...." />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Password" class="form-label"></label>
+                        <input asp-for="Password" class="form-control" placeholder="Şifre giriniz...." />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <input type="submit" class="mt-2 btn btn-success btn-sm float-end" value="Kaydet" />
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <a asp-action="Index" asp-controller="Home" class="btn btn-dark d-block">Ansayfaya Dön</a>
+            </div>
+        </div>
+    </div>
+</div>
+
